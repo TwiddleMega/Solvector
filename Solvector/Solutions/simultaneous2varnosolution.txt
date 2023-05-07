@@ -1,0 +1,10 @@
+f'''Input Equations:
+
+{a}x{addsign(b)}y={c}
+{d}x{addsign(e)}y={f}
+
+The matrix corresponding to this simultaneous equation is {round(det,4)}, which means this matrix is singular, and has either 0, or infinite solutions. 
+Infinite solutions occur when the line represented by both equations have an equal gradient and y-intercept. No solutions occur when the lines have the same gradient, and a different y-intercept. 
+
+This is because in the first case, the two equations represent the same line, so all values of y and x are true for both equations. In the second equation, the two equations are the same gradient but do not intersect, which means there are no values which satisfy both equations. 
+'''

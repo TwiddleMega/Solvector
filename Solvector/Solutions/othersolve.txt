@@ -1,0 +1,10 @@
+f'''Input Equation:
+
+{equation}=0
+
+The answer(s) to the above equation are displayed below:
+
+{str(answer).strip('[]')}
+
+Please note that depending on the type of equation, there may be more answers that are not represented above. The answers above are given to a specific range if infinite answers exist, such as with some trigonometric functions.
+'''

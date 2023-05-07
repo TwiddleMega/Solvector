@@ -1,0 +1,21 @@
+f'''Input Equations:
+
+{a}x{addsign(b)}y={c}
+{d}x{addsign(e)}y={f}
+
+The matrix corresponding to this simultaneous equation is {round(det,4)}, which means this matrix is non-singular, and can be solved.
+Simultaneous equations can be solved through multiple methods. One such method is to rearrange your first equation in terms of a variable.
+
+x = ({c}{addsign(-b)}y)/{a}
+
+This value of x can then be substituted into your second equation. Once you simplify it, you will have a single variable linear equation. 
+Once you solve for your value of y, substitute that value back into the rearranged equation above, and get the corresponding value of x. 
+These values are your answer to the simultaneous equation. Be sure not to mix them up! 
+
+The equation above has one solution:
+ 
+x = {solx}
+y = {soly}
+
+This can also be demonstrated graphically. Rearrange your equations to make y the subject, and plot their lines. The point of intersection of the lines (x,y) is the solution to the simultaneous equation.
+'''

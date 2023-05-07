@@ -1,0 +1,28 @@
+f'''Input Equation:
+
+{equation}
+
+The derivative of the above equation is displayed below:
+
+{answer}
+
+
+You can solve for the derivative by applying the rules below:
+
+
+Power rule: If y = x^n, then dy/dx = nx^(n-1)
+
+Product rule: If y = uv, then dy/dx = u*dv/dx + v*du/dx
+
+Quotient rule: If y = u/v, then dy/dx = (vdu/dx - udv/dx) / v^2
+
+Chain rule: If y = f(g(x)), then dy/dx = f'(g(x)) * g'(x)
+
+Exponential function rule: If y = e^x, then dy/dx = e^x
+
+Logarithmic function rule: If y = ln(x), then dy/dx = 1/x
+
+Trigonometric function rule: If y = sin(x), then dy/dx = cos(x), and if y = cos(x), then dy/dx = -sin(x)
+
+Some of these will be provided in the A-level formula booklet
+'''

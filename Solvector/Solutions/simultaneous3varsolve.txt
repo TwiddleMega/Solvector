@@ -1,0 +1,21 @@
+f'''Input Equations:
+
+{a}x{addsign(b)}y{addsign(c)}z = {d}
+{e}x{addsign(f)}y{addsign(g)}z = {h}
+{i}x{addsign(j)}y{addsign(k)}z = {l}
+
+The matrix corresponding to this simultaneous equation is {round(det,4)}, which means this matrix is non-singular, and has a solution that can be found.
+This solution can be found through repetitive substitution. You can rearrange the first equation to make x the subject:
+
+x = ({d}{addsign(-b)}y{addsign(-c)}z) / {a}
+
+and substitute this into the other two equations. When you simplify, you will be left with two simultaneous equations in two variables. 
+You can then solve this as you would, instructed in the "Simultaneous - 2 Var" section.
+
+Once you find the values of y and z, they can be substituted back into the equation above for a final answer of x.
+In this case, the solution to this equation is:
+
+x = {round(solx,3)}
+y = {round(soly,3)}
+z = {round(solz,3)}
+'''

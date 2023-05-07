@@ -1,0 +1,8 @@
+f'''Input Equation:
+
+{equation}=0
+
+The answer(s) to the above equation could not be determined. 
+This could be because of an error in the equation's input or formatting, or because solving for this type of equation is unsupported, or out of the A-level syllabus. 
+If you think this is an error in your equation entry, please check your formatting and try again.
+'''

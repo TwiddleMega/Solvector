@@ -1,0 +1,9 @@
+f'''Input Equations:
+
+{a}x{addsign(b)}y{addsign(c)}z={d}
+{e}x{addsign(f)}y{addsign(g)}z={h}
+{i}x{addsign(j)}y{addsign(k)}z={l}
+
+The matrix corresponding to this simultaneous equation is {round(det,4)}, which means this matrix is singular, and has either 0, or infinite solutions. 
+Infinite solutions occur when the planes represented by the equations are the same plane, or intersect along a line. No solutions occur when the planes are parallel and don't intersect, or form a prism. 
+'''

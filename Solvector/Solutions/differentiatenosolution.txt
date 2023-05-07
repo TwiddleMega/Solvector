@@ -1,0 +1,8 @@
+f'''Input Equation:
+
+{equation}
+
+The differential of the above equation is either unsupported, or could not be reliably calculated. 
+If you are sure this is within A-level specifications, please check your formatting on equation input, and try again.	
+
+'''

@@ -1,0 +1,35 @@
+f'''Input Equation:
+
+{a}x^2+{b}x+{c} = 0
+
+The equation can be factorised, since the determinant is a square number. 
+The determinant is given by b^2-4ac. In this case, that's {b}^2-4·{a}·{c}.
+That's equal to {det}, which is a square number.
+
+How to solve a quadratic equation through factorisation:
+
+Step 1: Consider the quadratic equation {a}x^2 + {b}x + {c} = 0
+Step 2: Now, find two numbers such that their product is equal to ac ({ac}) and sum equals to b ({b}).
+
+(number 1)(number 2) = {a*c}
+(number 1) + (number 2) = {b}
+
+Step 3: Now, split the middle term using these two numbers,
+
+{a}x^2 + (number 1)x + (number 2)x + {c} = 0
+
+Step 4: Take the common factors out and simplify.
+
+Once you do that, you get the following equation:
+
+{factored}=0
+
+Both of these brackets must be equal to zero. So you can solve them both individually:
+
+({coeff2}x{addsign(str(int(sol1Numerator)))})=0
+({coeff3}x{addsign(str(int(sol2Numerator)))})=0
+
+This is now a simple linear equation that gives you your two values of x, shown below.
+
+x={solution1}, x={solution2}'''
+

@@ -1,0 +1,16 @@
+f'''Input Equation:
+
+{a}x+{b} = 0
+
+To solve this linear equation, you first need to separate the knowns and unknowns.
+
+Step 1: Take {b} to the other side to separate it from the variable, x.
+
+{a}x = {-b}
+
+Step 2: Divide both sides of the equation by {a} so that your variable is alone. This leaves you with a single constant on the right hand side, and a single variable on the left, and your equation is now solved!
+
+x = {-b}/{a}
+x = {solution}
+'''
+

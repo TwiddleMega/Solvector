@@ -1,0 +1,26 @@
+f'''Input Equation:
+
+{a}x^2+{b}x+{c} = 0
+
+The equation can be factorised, since all terms have an x value in common. 
+This leads to a simple solve, since the x can be factorised out of the function.
+
+Step 1: Consider the quadratic equation {a}x^2 + {b}x = 0, and factorise out the x from the bracket:
+
+x({a}x{addsign(b)}) = 0
+
+Step 2: Both of these brackets must be equal to zero. So you can solve them both individually:
+Once you do that, you get the following equation:
+
+x=0
+{a}x{addsign(b)}=0
+
+This is now a simple linear equation that gives you your two values of x, shown below.
+
+x=0, x={b}/{a}
+
+or for a numerical answer:
+
+x=0, x={solution}
+'''
+
