@@ -48,10 +48,10 @@ def combo(value):
     pass
     
 def resourceopen():
-    openlink = eval(combobox.get())
+    openlink = (combobox.get()).split(',')
     
     with open('temp.txt', 'w') as f:
-        f.write(f'{openlink[1]}')
+        f.write(f'{openlink[1].strip()}')
 
     def run_program():
         subprocess.run(["python", "webviewcode.py"])
@@ -69,7 +69,10 @@ def resourcedelete():
     crsr = connection.cursor()
 
     searchresult = crsr.execute(f'''SELECT * FROM resources WHERE year="{year}" AND area="{area}" AND topic="{topic}" AND name="{name}"''')
+    deleteresult = f'DELETE FROM resources {searchresult}'
+    crsr.execute(deleteresult)
     resourcecheck = []
+    print(searchresult)
     for i in searchresult:
         resourcecheck.append(str(i))
     print(resourcecheck)
