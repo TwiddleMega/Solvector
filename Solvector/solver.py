@@ -61,16 +61,20 @@ Mathematical Functions and constants | (arc)sin() (arc)cos() (arc)tan() log10() 
 Enter your unknown as "x", and enter no spaces in the equation''')
 
 
+#Function called to solve equations
 def equationsolve():
     textbox.delete("0.0", "end")
     textbox.insert("0.0", "Error - Please retry.")
 
+    #Linear equations
     def Linear():
         constants = (entry.get()).split(',')
         a,b = int(constants[0]),int(constants[1])
 
+        #Compute solution
         solution = -b/a
 
+        #Pass values to file, evaluate, and output to textbox
         with open('Solutions/linearsolve.txt', 'r', encoding='utf-8') as file:
             text = file.read()
             data = text
@@ -78,8 +82,10 @@ def equationsolve():
             textbox.delete("0.0", "end")    
             textbox.insert("0.0", eval(data))
 
+    #Quadratic solve
     def Quadratic():
         solved = 0
+        #function to properly display signs
         def addsign(a):
             if int(a)>0:
                 a=" + "+str(a)
@@ -88,21 +94,24 @@ def equationsolve():
             else:
                 a=" - "+str(a)
             return a
-        
+
+        #Calculate GCD to check for factorisation
         def gcdCalc(a,b):
             while b:
                 temp = a
                 a = b
                 b = temp%b
             return abs(a)
-            
+
+        #Get factors and compute values
         constants = (entry.get()).split(',')
         a,b,c = int(constants[0]),int(constants[1]),int(constants[2])
         ac = a*c
         gcdTemp=gcdCalc(a,b)
         gcd=gcdCalc(gcdTemp,c)
         det = b**2-4*a*c
-        
+
+        #Factoring situation one
         if c==0:
             solution = b/a
 #            print(f"x({a}x{addsign(b)})")
@@ -114,6 +123,7 @@ def equationsolve():
                 textbox.delete("0.0", "end")
                 textbox.insert("0.0", eval(data))
         else:
+            #Compute quadratic formula numerator
             sol1Numerator=-b+((b**2-4*a*c)**(1/2))
             sol2Numerator=-b-((b**2-4*a*c)**(1/2))
             denom=2*a
@@ -122,6 +132,7 @@ def equationsolve():
             numer2 = sol2Numerator
         
             try:
+                #Compute factors and define factorised values
                 print(det, "det")
                 print(math.sqrt(det), "sqrt")
                 test = int(math.sqrt(det))
@@ -153,7 +164,8 @@ def equationsolve():
 
                 solution1 = int(numer1/denom)
                 solution2 = int(numer2/denom)
-
+                
+                #Open and evaluate file with values.
                 with open('Solutions/quadraticfactorise.txt', 'r', encoding='utf-8') as file:
                     text = file.read()
                     data = text
@@ -165,6 +177,7 @@ def equationsolve():
             except:
                 pass
 
+            #Compute for complex quadratics
             if float(det)<0:
                 with open('Solutions/quadraticcomplex.txt', 'r', encoding='utf-8') as file:
                     text = file.read()
@@ -174,8 +187,8 @@ def equationsolve():
                     textbox.insert("0.0", eval(data))
 
                     solved = 1
+            #Compute for regular solve with equation.
             elif solved != 1:
-                print("what, normal too?")
                 with open('Solutions/quadraticsolve.txt', 'r', encoding='utf-8') as file:
                     text = file.read()
                     data = text
@@ -185,6 +198,7 @@ def equationsolve():
 
                     solved = 1
                     
+    #Simultaneous solve                
     def Simultaneous2Var():
         def addsign(a):
             if int(a)>0:
@@ -195,10 +209,12 @@ def equationsolve():
                 a=" - "+str(a)
             return a
 
-        
+        #Get constants
         constants = (entry.get()).split(',')
         a,b,c,d,e,f = int(constants[0]),int(constants[1]),int(constants[2]),int(constants[3]),int(constants[4]),int(constants[5])
 
+
+        #Check equation consistency and output result through file accordingly
         mat = np.array([[a,b],
                         [d,e]])
         det = np.linalg.det(mat)
@@ -223,7 +239,8 @@ def equationsolve():
 
                 textbox.delete("0.0", "end")    
                 textbox.insert("0.0", eval(data))
-    
+
+    #3var simultaneous
     def Simultaneous3Var():
         def addsign(a):
             if int(a)>0:
@@ -234,7 +251,8 @@ def equationsolve():
                 a=" - "+str(a)
             return a
 
-        
+
+        #Compute consistency and output values from file accordingly
         constants = (entry.get()).split(',')
         a,b,c,d,e,f,g,h,i,j,k,l = int(constants[0]),int(constants[1]),int(constants[2]),int(constants[3]),int(constants[4]),int(constants[5]),int(constants[6]),int(constants[7]),int(constants[8]),int(constants[9]),int(constants[10]),int(constants[11])
 
@@ -261,7 +279,9 @@ def equationsolve():
                 textbox.delete("0.0", "end")    
                 textbox.insert("0.0", eval(data))   
 
+    #Trigonometric solve
     def Trigonometric():
+        #Solve through sympy
         equation = entry.get()
         print(equation)
         x = symbols('x')
@@ -269,7 +289,8 @@ def equationsolve():
         answers = []
         for i in solution:
             answers.append(str(i[0]))
-                
+
+        #Solve through eval of file
         with open('Solutions/trigonometricsolve.txt', 'r', encoding='utf-8') as file:
                 text = file.read()
                 data = text
@@ -277,6 +298,7 @@ def equationsolve():
                 textbox.delete("0.0", "end")
                 textbox.insert("0.0", eval(data))
 
+    #Solve Differentiation
     def Differentiate():
         equation = entry.get()
 
@@ -289,6 +311,7 @@ def equationsolve():
 
                 textbox.delete("0.0", "end")
                 textbox.insert("0.0", eval(data))
+        #No solution
         except:
             with open('Solutions/differentiatenosolution.txt', 'r', encoding='utf-8') as file:
                 text = file.read()
@@ -297,6 +320,7 @@ def equationsolve():
                 textbox.delete("0.0", "end")
                 textbox.insert("0.0", eval(data))
 
+    #Solve other equation through sympy
     def Other():
         equation = entry.get()
         x = Symbol('x')
@@ -310,6 +334,7 @@ def equationsolve():
 
                 textbox.delete("0.0", "end")
                 textbox.insert("0.0", eval(data))
+        #No solution
         except:
             with open('Solutions/othernosolution.txt', 'r', encoding='utf-8') as file:
                 text = file.read()
@@ -318,6 +343,7 @@ def equationsolve():
                 textbox.delete("0.0", "end")
                 textbox.insert("0.0", eval(data))
 
+    #Compute based on selected value
     if value == "Linear":
         Linear()
     elif value == "Quadratic":

@@ -284,7 +284,8 @@ def graphequation(graphlist,k):
         screen.blit(instruct,(width+10, 210))
         instruct = font.render('Equations:',1,black)
         screen.blit(instruct,(width+10, 280))
-        
+
+        #Output list of graphs and colous
         for i in range(len(graphlist)):
             graphs = font.render(f'{i+1}) {graphlist[i]} - {colournames[i%5]}',1,black)
             screen.blit(graphs,(width+100,280+(i*25)))
