@@ -46,56 +46,42 @@ app.title("Solvector - Equation Solver")
 #GUI Commands and Processes
 def combo(value):
     pass
-
-#Run webview to open resource
+    
 def resourceopen():
-    openlink = (combobox.get()).split(',')
-    #Get properties of selected record
-
-    #Write link to a temp file
+    openlink = eval(combobox.get())
+    
     with open('temp.txt', 'w') as f:
-        f.write(f'{openlink[1].strip()}')
+        f.write(f'{openlink[1]}')
 
-    #Run resource view code as a new thread
     def run_program():
         subprocess.run(["python", "webviewcode.py"])
 
     t = threading.Thread(target=run_program)
     t.start()
 
-#Function to delete resource
 def resourcedelete():
     resource = combobox.get()
-
-    #Identify record parameters
+    
     resourceid,link,year,area,topic,name = resource.split(',')
     resourceid,link,year,area,topic,name = resourceid.strip(),link.strip(),year.strip(),area.strip(),topic.strip(),name.strip()
 
     connection = sqlite3.connect("notes.db")
     crsr = connection.cursor()
 
-    #Identify record object from query and delete from table
     searchresult = crsr.execute(f'''SELECT * FROM resources WHERE year="{year}" AND area="{area}" AND topic="{topic}" AND name="{name}"''')
-    deleteresult = f'DELETE FROM resources {searchresult}'
-    crsr.execute(deleteresult)
     resourcecheck = []
-    print(searchresult)
     for i in searchresult:
         resourcecheck.append(str(i))
     print(resourcecheck)
 
-#Function to add resources
 def resourceadd():
-    #Run pogram as subprocess in new thread
     def run_program():
         subprocess.run(["python", "addnotes.py"])
 
     t = threading.Thread(target=run_program)
     t.start()
 
-#Function to search through the dataset
 def search():
-    #Function to merge in mergesort
     def merge(arr, l, m, r):
         n1 = m - l + 1
         n2 = r - m
@@ -131,8 +117,7 @@ def search():
             arr[k] = R[j]
             j += 1
             k += 1
-
-    #Merge sort to sort query results
+     
     def mergeSort(arr, l, r):
         narr = arr
         if l < r:
@@ -143,14 +128,12 @@ def search():
             mergeSort(narr, m+1, r)
             merge(narr, l, m, r)
         return narr
-
-    #Get user entries
+    
     year,area,topic,name,link = yearselect.get(),areaselect.get(),topicselect.get(),nameentry.get(),linkentry.get()
 
     connection = sqlite3.connect("notes.db")
     crsr = connection.cursor()
 
-    #Search with available parameters in notes database
     if name=='' and link=='':
         searchresult1 = crsr.execute(f'''SELECT * FROM notes WHERE year="{year}" AND area="{area}" AND topic="{topic}"''')
     elif name=='':
@@ -159,8 +142,7 @@ def search():
         searchresult1 = crsr.execute(f'''SELECT * FROM notes WHERE year="{year}" AND area="{area}" AND topic="{topic}" AND name="{name}"''')
     else:
         searchresult1 = crsr.execute(f'''SELECT * FROM notes WHERE year="{year}" AND area="{area}" AND topic="{topic}" AND name="{name}" AND link="{link}"''')
-
-    #Define result lists from query and translate query object to strings
+        
     resultlist = []
     result2list = []
     for i in searchresult1:
@@ -171,9 +153,8 @@ def search():
 ##                interimlist.append(val[:20]+"...")
 ##            else:
             interimlist.append(val)
-        resultlist.append(str(interimlist).strip('[]'))#Format strings from query
+        resultlist.append(str(interimlist).strip('[]'))
 
-    #Repeat query in resources table with given ID values from 
     for i in resultlist:
         for j in eval(i):
             try:
@@ -188,7 +169,6 @@ def search():
 
     global combobox
 
-    #Collate and sort Query results
     finalsearch = []
     for i in resultlist:
         i = i.replace("'",'')
@@ -197,8 +177,7 @@ def search():
 
     #resultlist = mergeSort(resultlist,0,len(resultlist)-1)
     finalsearch = mergeSort(finalsearch,0,len(finalsearch)-1)
-
-    #Display query in commbobox
+    
     combobox = ctk.CTkComboBox(master=frame,values=finalsearch,command=combo, width=500)
     combobox.place(x=170,y=230)
     connection.close()
