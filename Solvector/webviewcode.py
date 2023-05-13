@@ -1,7 +1,10 @@
 import webview
 
 with open('temp.txt', 'r') as file:
-    data = file.read()
+    data = file.read().strip()
 
-window_1 = webview.create_window('Solvector', f'{data}')
+#Create window instance with link in temp file
+window_1 = webview.create_window('Solvector', data)
 webview.start()
+
+
